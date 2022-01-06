@@ -7,6 +7,7 @@ export const del: RequestHandler = (request) => {
 
 export const patch: RequestHandler<{}, FormData> = (request) => {
     return api(request, {
-        content: request.body.get("update-list")
+        content: request.body.get("update-list"),
+        done: request.body.has("done") ? !!request.body.get("done") : undefined
     })
 }
