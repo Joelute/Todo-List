@@ -18,7 +18,7 @@ ports:
     onOpen: open-browser
   - port: 5432
     onOpen: ignore
-  -port: 5555
+  - port: 5555
     onOpen: open-browser
 
 vscode:
