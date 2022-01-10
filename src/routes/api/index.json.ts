@@ -8,7 +8,6 @@ export const get: RequestHandler = (request) => {
 export const post: RequestHandler<{}, FormData> = (request) => {
 
     return api(request, {
-        uid: `${Date.now()}`,
         created_at: new Date(),
         content: request.body.get("text"),
         done: false
