@@ -2,7 +2,7 @@
   "name": "todo-list",
   "version": "0.0.1",
   "scripts": {
-    "predev":"prisma migrate dev",
+    "predev": "prisma migrate dev",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
