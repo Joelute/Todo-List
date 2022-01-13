@@ -17,6 +17,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "cookie": "^0.4.1",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
     "prisma": "^3.7.0",
