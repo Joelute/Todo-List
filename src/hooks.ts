@@ -1,3 +1,5 @@
+//No problems in this file
+
 import type { Handle } from "@sveltejs/kit";
 import type { GetSession } from "@sveltejs/kit";
 import cookie from 'cookie';
@@ -38,7 +40,7 @@ export const getSession: GetSession = async (request) => {
             }
         }
     }
-/*
+
     if (cookies.disco_access_token) {
         console.log('setting discord user via access token...')
         const request = await fetch(`${DISCORD_API}/users/@me`, {
@@ -54,7 +56,7 @@ export const getSession: GetSession = async (request) => {
             }
         }
     }
-*/
+
     return {
         user: false
     }
