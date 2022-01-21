@@ -9,16 +9,25 @@ export const api = async (request: Request, data?:Record<string, unknown>) => {
 
     switch (request.method.toUpperCase()) {
         case "GET":
-            body = await prisma.todo.findMany();
-            status = 200;
-            break;
+            if (data.uid) {
+                body = await prisma.todo.findMany({where: {
+                    uid: data.uid
+                }});
+                status = 200;
+                break;
+            } else {
+                status = 200;
+            }
+
+                
         
         case "POST":
             body = await prisma.todo.create({
                 data: {
                     created_at: data.created_at as Date,
                     done: data.done as boolean,
-                    content: data.content as string
+                    content: data.content as string,
+                    uid: data.uid as string
                 }
             });
             status = 201;
@@ -26,7 +35,7 @@ export const api = async (request: Request, data?:Record<string, unknown>) => {
 
         case "DELETE":
             await prisma.todo.delete({where: {
-                uid: request.params.uid
+                id: request.params.id,
             }})
             status = 200;
             break;
@@ -34,7 +43,7 @@ export const api = async (request: Request, data?:Record<string, unknown>) => {
         case "PATCH":
             body = await prisma.todo.update({
                 where: {
-                    uid: request.params.uid
+                    id: request.params.id
                 },
                 data: {
                     done: data.done,

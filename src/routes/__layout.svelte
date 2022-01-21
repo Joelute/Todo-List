@@ -1,24 +1,16 @@
-
 <script context="module" lang="ts">
-    //No problems in script
-    import type { Load } from "@sveltejs/kit";
-    
-    export const load: Load = async ({ session }) => {
-        return {
-            props: { user: session.user || false } 
-        }
+	import type { Load } from "@sveltejs/kit";
+	export const load: Load = async ({session}) => {
+    return { 
+      props: { user: session.user || false } 
     }
-    
+  }
 </script>
 
-<script>
-    //No problems in script
+<script lang="ts">
     export let user;
-    console.log('user', user)
     import "../app.css";
 </script>
-
-
 
 <nav class = "nav-bar">
     <ul class = "nav-links">
