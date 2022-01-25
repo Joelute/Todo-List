@@ -57,6 +57,7 @@
             if (t.id === updatedTodo.id) return updatedTodo; return t;
         })
     }
+
 </script>
 
 <style>

@@ -6,3 +6,7 @@ type Todo = {
     done: boolean;
     uid: string;
 }
+
+interface ImportMetaEnv {
+    VITE_DISCORD_URL: string;
+}

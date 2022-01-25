@@ -10,6 +10,9 @@
 <script lang="ts">
     export let user;
     import "../app.css";
+
+    import { variables } from "$lib/variables";
+
 </script>
 
 <nav class = "nav-bar">
@@ -23,7 +26,7 @@
     </ul>
     {#if !user}
         <div class = "login-button"> 
-            <a href="https://discord.com/api/oauth2/authorize?client_id=930626088135196742&redirect_uri=https%3A%2F%2F3000-peach-coyote-w3aqp3gu.ws-us28.gitpod.io%2Fapi%2Fcallback&response_type=code&scope=identify">Login</a>
+            <a href="{variables.VITE_DISCORD_URL}">Login</a>
         </div>
 
     {:else}
