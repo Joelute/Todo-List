@@ -30,7 +30,7 @@
         </div>
 
     {:else}
-        <img alt="{user.userName}#{user.discriminator} avatar" src="https://cdn.discordapp.com/avatars/{user.id}/{user.avatar}.png">
+        <img class="avatar-pic" alt="{user.userName}#{user.discriminator} avatar" src="https://cdn.discordapp.com/avatars/{user.id}/{user.avatar}.png">
     {/if}
   
 </nav>

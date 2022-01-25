@@ -86,3 +86,9 @@ h1 {
     letter-spacing: 3px;
     align-items:  center;
 }
+
+.avatar-pic {
+    min-height: 8vh;
+    max-height: 1em;
+    border-radius: 50%;
+}

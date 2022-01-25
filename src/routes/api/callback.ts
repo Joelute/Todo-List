@@ -27,7 +27,6 @@ export async function get({query}) {
     });
 
     const response = await request.json();
-    console.log(response)
 
     if (response.error) {
         console.log('redirect to / due error');
