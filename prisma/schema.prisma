@@ -11,8 +11,11 @@ generator client {
 }
 
 model Todo {
-    uid  String @id @default(cuid())
+    id  String @id @default(cuid())
     created_at DateTime
     content String
     done Boolean
+    uid String
 }
+
+

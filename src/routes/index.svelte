@@ -2,30 +2,49 @@
     import type { Load } from "@sveltejs/kit";
     import { enhance } from "$lib/actions/form";
 
-    export const load: Load = async ({ fetch }) => {
-        const response = await fetch("/api.json");
+    export const load: Load = async ({ fetch , session}) => {
+        if (session.user.id){
+            const response = await fetch("/api.json", {
+                method: "GET",
+                headers: { user: session.user.id }
+                }
+            );
 
-        if (response.ok) {
-            const todos = await response.json();
-            return{
-                props : { todos }
-            } 
-        }
+            if (response.ok) {
+                const todos = await response.json();
+                return{
+                    props : { todos , user: session.user || false}
+                } 
+            }
 
-        const { message } = await response.json();
-        return{
-            error: new Error(message)
+            const { message } = await response.json();
+                return{
+                    error: new Error(message)
+                }
+            }
+
+        else {
+            return {
+                status:303,
+                headers: {
+                    location: "/login"
+                }
+            }
         }
     };
 
 </script>
 
+
+
 <script lang="ts">
     import TodoItem from "$lib/todo-item.svelte";
-
+    export let user:any;
     export let todos:Todo[];
+    import { setContext } from 'svelte';
+    setContext(user, user);
     const title = "To Do"
-
+    
     const processNewTodoResult = async (response: Response, form: HTMLFormElement) => {
         const newTodo = await response.json();
         todos = [...todos, newTodo];
@@ -35,9 +54,10 @@
     const ProcessUpdatedTodoResult = async (response: Response) => {
         const updatedTodo = await response.json();
         todos = todos.map(t => {
-            if (t.uid === updatedTodo.uid) return updatedTodo; return t;
+            if (t.id === updatedTodo.id) return updatedTodo; return t;
         })
     }
+
 </script>
 
 <style>
@@ -68,20 +88,23 @@
     }
 </style>
 
-<svelte:head>
-    <title>{title}</title>
-</svelte:head>
+    <svelte:head>
+        <title>{title}</title>
+    </svelte:head>
 
-<div class = "todos">
-    <h1>{title}</h1>
-    <form action = "/api.json" method = "post" class="new" use:enhance={{result: processNewTodoResult}}>
-        <input type = "text" name = "text" aria-label="Add a todo" placeholder="+ type to add a todo" />
-    </form>
-    {#each todos as todo}
-        <TodoItem
-            {todo}
-            ProcessDeletedTodoResult={() => {
-                todos = todos.filter(t => t.uid !== todo.uid);}}
-            {ProcessUpdatedTodoResult}/>
-    {/each}
-</div>
+{#if user}
+    <div class = "todos">
+        <h1>{title}</h1>
+        <form action = "/api.json" method = "post" class="new" use:enhance={{result: processNewTodoResult}}>
+            <input type = "text" name = "text" aria-label="Add a todo" placeholder="+ type to add a todo" />
+            <input type = "hidden" name = "user" value = {user.id} />
+        </form>
+        {#each todos as todo}
+            <TodoItem
+                {todo}
+                ProcessDeletedTodoResult={() => {
+                    todos = todos.filter(t => t.id !== todo.id);}}
+                {ProcessUpdatedTodoResult}/>
+        {/each}
+    </div>
+{/if}
