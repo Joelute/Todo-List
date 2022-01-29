@@ -10,14 +10,13 @@ export async function get({query}) {
             status: 500
         }
     }
-
+    
     const dataObject = {
         client_id: DISCORD_CLIENT_ID as string,
         client_secret: DISCORD_SECRET as string,
         grant_type: 'refresh_token',
         redirect_uri: DISCORD_REDIRECT_URI as string,
         refresh_token: disco_refresh_token,
-        scope: 'identify email guilds'
     }
 
     const request = await fetch('https://discord.com/api/oauth2/token', {
@@ -26,7 +25,10 @@ export async function get({query}) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
 
+    
+
     const response = await request.json();
+
 
     if (response.error){
         return {
@@ -34,7 +36,8 @@ export async function get({query}) {
             status: 500
         }
     };
-    
+
+
     const access_token_expires_in = new Date(Date.now() + response.expires_in); // 10 minutes
     const refresh_token_expires_in = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
     console.log('set refreshed cookies');
