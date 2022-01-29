@@ -128,8 +128,8 @@ h1 {
     }
 
     .nav__list {
-        display: flex;
-        column-gap: 2rem;
+        display: flex !important;
+        column-gap: 2rem !important;
     }
 
     .nav__menu {
