@@ -110,7 +110,7 @@ h1 {
     .header {
         top: 0;
         bottom: initial;
-    }
+    }              
 
     .header {
         padding: 0 1rem;
@@ -128,8 +128,8 @@ h1 {
     }
 
     .nav__list {
-        display: flex;
-        column-gap: 2rem;
+        display: flex !important; 
+        column-gap: 2rem !important; 
     }
 
     .nav__menu {
