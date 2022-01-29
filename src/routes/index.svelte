@@ -64,7 +64,11 @@
     .todos {
         width: 100%;
         max-width: 42rem;
-        margin: 4rem auto 0 auto;
+        padding: var(--mb-1);
+        margin: 8.5rem auto 0 auto;
+        border-radius: 1.5rem;
+        background-color: var(--body-color);
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
     }
 
     .new {
@@ -88,15 +92,15 @@
     }
 </style>
 
-    <svelte:head>
-        <title>{title}</title>
-    </svelte:head>
+<svelte:head>
+    <title>{title}</title>
+</svelte:head>
 
 {#if user}
     <div class = "todos">
         <h1>{title}</h1>
         <form action = "/api.json" method = "post" class="new" use:enhance={{result: processNewTodoResult}}>
-            <input type = "text" name = "text" aria-label="Add a todo" placeholder="+ type to add a todo" />
+            <input type = "text" name = "text" aria-label="Add a todo" placeholder="+ type to add a note" />
             <input type = "hidden" name = "user" value = {user.id} />
         </form>
         {#each todos as todo}
