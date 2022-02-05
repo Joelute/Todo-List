@@ -3,8 +3,6 @@ h1 {
     font-size: 2rem;
 }
 
-/* CSS styling for Header and Nav-bar */
-
 .header {
     width: 100%;
     position: fixed;
@@ -33,6 +31,23 @@ h1 {
 .nav__toggle:hover {
     color: var(--first-color);
 }
+
+@media screen and (max-width:767px) {
+    .nav__menu{
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 35%;
+        background-color: var(--body-color);
+        padding: 2.5rem 1.5rem 2rem;
+        box-shadow: 4px -1px 4px -1px rgba(0, 0, 0, .15);
+        border-radius: 0 0 1.5rem 1.5rem;
+        transition: 0.3s;
+
+    }
+}
+
 
 .nav__list{
     grid-template-columns: auto;
@@ -71,92 +86,15 @@ h1 {
     color: var(--first-color-alt)
 }
 
-.avatar-pic {
-    max-height: var(--header-height);
-    border-radius: 50%;
-}
-
-/* CSS styling for Header and Nav-bar */
-
-/* CSS utils for animations */
-
 .show-menu {
     top: 0;
 }
 
-.show-music {
-    bottom: -0.5rem !important;
-}
 
-.hide__element {
-    visibility: hidden !important;
-}
-
-.show__element {
-    visibility: visible !important;
-}
-
-/* CSS utils for animations */
-
-/* CSS styling for spotify music player */
-
-.spotify__toggle {
-    position: absolute !important;
-    width: 3rem;
-    height: 3rem;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    font-size: 1.1rem;
-    cursor: pointer;
+.avatar-pic {
+    max-height: var(--header-height);
     border-radius: 50%;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
-    text-align: center;
-    padding-top: 0.5rem;
 }
-
-.spotify__player {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-}
-
-.spotify__player__menu {
-    border-radius: 12px 12px 0 0;
-    padding-top: 0.5rem;
-    background-color: var(--body-color);
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
-}
-
-.spotify__music__player {
-    border-radius: 12px 12px 0 0;
-    box-shadow: 4px 4px -1px -1px rgba(0, 0, 0, 1);
-}
-
-.spotify__list {
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    text-decoration: none;
-}
-
-.spotify__button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: var(--small-font-size);
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    cursor:pointer;
-}
-
-.spotify__button:hover {
-    color: var(--first-color)
-}
-
-/* CSS styling for spotify music player */
-
-/* CSS styling for small devices */
 
 @media screen and (max-width: 350px) {
     .nav__menu {
@@ -166,48 +104,7 @@ h1 {
     .nav__list {
         column-gap: 0;
     }
-
-    .spotify__toggle {
-        bottom: 1rem !important;
-        left: -0.5rem !important;
-    }
 }
-
-/* CSS styling for small devices */
-
-/* CSS styling for medium devices */
-
-@media screen and (max-width:767px) {
-    .nav__menu{
-        position: fixed;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 35%;
-        background-color: var(--body-color);
-        padding: 2.5rem 1.5rem 2rem;
-        box-shadow: 4px -1px 4px -1px rgba(0, 0, 0, .15);
-        border-radius: 0 0 1.5rem 1.5rem;
-        transition: 0.3s;
-    }
-
-    .spotify__player__menu {
-        position: fixed;
-        bottom:-100%;
-        left: 0;
-        width: 100%;
-        transition: 0.3s;
-    }
-    
-    .spotify__toggle {
-        bottom: 1rem !important;
-        left: -0.5rem !important;
-    }
-}
-
-/* CSS styling for medium devices */
-
-/* CSS styling for large devices */
 
 @media screen and (min-width: 768px) {
     .header {
@@ -229,10 +126,10 @@ h1 {
     .nav__toggle {
         display: none;
     }
- 
+
     .nav__list {
-        display: flex !important; 
-        column-gap: 2rem !important; 
+        display: flex !important;
+        column-gap: 2rem !important;
     }
 
     .nav__menu {
@@ -243,19 +140,4 @@ h1 {
     .login-button a {
         font-size: 1rem;
     }
-
-    .spotify__player__menu {
-        position: fixed; 
-        bottom:-100%; 
-        left: 0; 
-        width: 20rem;
-        background-color: var(--body-color);
-        transition: 0.3s;
-    }
-    .spotify__toggle {
-        bottom: 1rem !important;
-        left: 1rem !important;
-    }
 }
-
-/* CSS styling for large devices */

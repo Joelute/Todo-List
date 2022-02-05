@@ -20,7 +20,7 @@ export const getSession: GetSession = async (request) => {
     const cookies = cookie.parse(request.headers.cookie || "");
 
     if (cookies.disco_refresh_token && !cookies.disco_access_token) {
-        const discord_request = await fetch(`${HOST}auth/refresh?code=${cookies.disco_refresh_token}`);
+        const discord_request = await fetch(`${HOST}api/refresh?code=${cookies.disco_refresh_token}`);
         console.log(discord_request)
         const discord_response = await discord_request.json();
     
