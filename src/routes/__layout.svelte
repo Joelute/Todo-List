@@ -77,14 +77,17 @@
     import "$lib/css/_layout.css"
     import { variables } from "$lib/variables";
     import { onMount } from "svelte"
-    import { onDestroy } from 'svelte';
     onMount(() => {
         const navMenu = document.getElementById("nav-menu"),
                 navToggle = document.getElementById("nav-toggle"),
-                navClose = document.getElementById("nav-close")
+                navClose = document.getElementById("nav-close"),
+                musicMenu = document.getElementById("spotify-player-menu"),
+                musicClose = document.getElementById("spotify-close"),
+                musicToggle = document.getElementById("spotify-toggle")
 
         if (navToggle){
             navToggle.addEventListener('click', () =>{
+                
                 navMenu.classList.add("show-menu")
             })
         }
@@ -99,13 +102,8 @@
         }
         navLink.forEach(n => n.addEventListener('click', linkAction))
 
-        const musicMenu = document.getElementById("spotify-player-menu"),
-                musicClose = document.getElementById("spotify-close"),
-                musicToggle = document.getElementById("spotify-toggle")
-
         if (musicClose) {
             musicClose.addEventListener("click", () => {
-                console.log("Closed")
                 musicMenu.classList.remove("show-music")
                 musicToggle.classList.remove("hide__element")
             })
