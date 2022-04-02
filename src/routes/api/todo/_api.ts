@@ -14,6 +14,7 @@ export const api = async (request: Request, data?:Record<string, unknown>) => {
                     uid: data.uid
                 }});
                 status = 200;
+                
                 break;
             } else {
                 status = 200;

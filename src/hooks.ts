@@ -1,5 +1,3 @@
-//No problems in this file
-
 import type { Handle } from "@sveltejs/kit";
 import type { GetSession } from "@sveltejs/kit";
 import cookie from 'cookie';
@@ -20,10 +18,15 @@ export const getSession: GetSession = async (request) => {
     const cookies = cookie.parse(request.headers.cookie || "");
 
     if (cookies.disco_refresh_token && !cookies.disco_access_token) {
-        const discord_request = await fetch(`${HOST}auth/refresh?code=${cookies.disco_refresh_token}`);
+        const discord_request = await fetch(`${HOST}/auth/refresh?code=${cookies.disco_refresh_token}`, { 
+            method: 'GET',
+            headers: {
+                accept: "application/json"
+            }
+        });
         console.log(discord_request)
         const discord_response = await discord_request.json();
-    
+        
 
         if (discord_response.disco_access_token) {
             console.log('setting discord user via refresh token..')

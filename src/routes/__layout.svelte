@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
 	import type { Load } from "@sveltejs/kit";
 	export const load: Load = async ({session}) => {
-    return { 
-      props: { user: session.user || false } 
-        }
+        return { 
+        props: { user: session.user || false } 
+            }
     }
 </script>
 
@@ -13,7 +13,6 @@
     import "$lib/css/_layout.css"
     import { musicList } from "$lib/musicList";
     import { variables } from "$lib/variables";
-    import { onMount } from "svelte"
     
     let track_index = 0;
     let isPlaying = false;
@@ -167,6 +166,11 @@
                 <li class="nav__item">
                     <a href= "./" class="nav__link" on:click={closeNav}>
                         <i class="uil uil-estate nav__icon"></i> Home
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href= "./diary" class="nav__link" on:click = {closeNav}>
+                        <i class="uil uil-diary-alt nav__icon"></i> Diary
                     </a>
                 </li>
                 <li class="nav__item">

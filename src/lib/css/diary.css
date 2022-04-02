@@ -1,0 +1,24 @@
+.diary__container {
+    width: 100%;
+    max-width: 42rem;
+    margin: 8.5rem auto 0 auto;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    padding: var(--mb-1);
+    align-items: center;
+}
+
+.diary__textarea {
+    margin:1rem 0 0 0;
+    width:100%;
+    max-width: 40rem;
+    height: 40rem;
+    font-size: var(--font-normal);
+    border: none;
+    padding: 1rem;
+    text-align: center;
+    resize: none;
+    background-color: var(--body-color);
+    overflow: auto;
+    outline: none;
+}
