@@ -18,4 +18,9 @@ model Todo {
     uid String
 }
 
-
+model Diaries {
+    id String @id @default(cuid())
+    content String
+    date DateTime
+    uid String
+}

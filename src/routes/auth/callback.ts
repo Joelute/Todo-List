@@ -1,14 +1,13 @@
 const DISCORD_CLIENT_ID = import.meta.env.VITE_DISCORD_CLIENT_ID;
 const DISCORD_SECRET = import.meta.env.VITE_DISCORD_CLIENT_SECRET;
 const DISCORD_REDIRECT_URI = import.meta.env.VITE_DISCORD_REDIRECT_URI;
-/**
- * @type {import('@sveltejs/kit').RequestHandler}
- */
+
+
+
 
 export async function get({query}) {
     const returnCode = query.get('code');
     console.log('returnCode =>', returnCode);
-
     const dataObject = {
         client_id: DISCORD_CLIENT_ID as string,
         client_secret: DISCORD_SECRET as string,

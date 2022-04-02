@@ -264,7 +264,7 @@ h1 {
 }
 
 .music__toggle {
-    position: absolute;
+    position: fixed;
     width: 3rem;
     height: 3rem;
     color: var(--title-color);
@@ -315,7 +315,7 @@ h1 {
         top: -100%;
         left: 0;
         width: 100%;
-        height: 35%;
+        height: 45%;
         background-color: var(--body-color);
         padding: 2.5rem 1.5rem 2rem;
         box-shadow: 4px -1px 4px -1px rgba(0, 0, 0, .15);

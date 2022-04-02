@@ -76,17 +76,17 @@
 </style>
 
 <div class="todo" class:done={todo.done}>
-    <form action = "/api/{todo.id}.json?_method=patch" method = "post" use:enhance = {{result: ProcessUpdatedTodoResult}}>
+    <form action = "/api/todo/{todo.id}.json?_method=patch" method = "post" use:enhance = {{result: ProcessUpdatedTodoResult}}>
         <input type = "hidden" name = "done" value = "{todo.done? '' : 'true'}" />
         <button aria-label="Mark todo as {todo.done ? "Not Done": "Done"}" class="toggle"></button>
     </form>
 
-    <form action = "/api/{todo.id}.json?_method=patch" method = "post" class="text" use:enhance = {{result: ProcessUpdatedTodoResult}}>
+    <form action = "/api/todo/{todo.id}.json?_method=patch" method = "post" class="text" use:enhance = {{result: ProcessUpdatedTodoResult}}>
         <input type = "text" name = "update-list" value="{todo.content}"/>
         <button aria-label="Save todo" class="save"></button>
     </form>
 
-    <form action = "/api/{todo.id}.json?_method=delete" method = "post" use:enhance= {{result: ProcessDeletedTodoResult}}>
+    <form action = "/api/todo/{todo.id}.json?_method=delete" method = "post" use:enhance= {{result: ProcessDeletedTodoResult}}>
         <button aria-label="Delete todo" class="delete"></button>
     </form>
 </div>
