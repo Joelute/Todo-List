@@ -29,6 +29,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@prisma/client": "^3.7.0"
+    "@prisma/client": "^3.7.0",
+    "node-fetch": "^3.2.1"
   }
 }

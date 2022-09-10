@@ -4,7 +4,7 @@
 
     export const load: Load = async ({ fetch , session}) => {
         if (session.user.id){
-            const response = await fetch("/api.json", {
+            const response = await fetch("/api/todo.json", {
                 method: "GET",
                 headers: { user: session.user.id }
                 }
@@ -22,15 +22,6 @@
                     error: new Error(message)
                 }
             }
-
-        else {
-            return {
-                status:303,
-                headers: {
-                    location: "/login"
-                }
-            }
-        }
     };
 
 </script>
@@ -38,7 +29,7 @@
 
 
 <script lang="ts">
-    import TodoItem from "$lib/todo-item.svelte";
+    import TodoItem from "$lib/components/todo-item.svelte";
     export let user:any;
     export let todos:Todo[];
     import { setContext } from 'svelte';
@@ -57,6 +48,8 @@
             if (t.id === updatedTodo.id) return updatedTodo; return t;
         })
     }
+
+   
 
 </script>
 
@@ -99,7 +92,7 @@
 {#if user}
     <div class = "todos">
         <h1>{title}</h1>
-        <form action = "/api.json" method = "post" class="new" use:enhance={{result: processNewTodoResult}}>
+        <form action = "/api/todo.json" method = "post" class="new" use:enhance={{result: processNewTodoResult}}>
             <input type = "text" name = "text" aria-label="Add a todo" placeholder="+ type to add a note" />
             <input type = "hidden" name = "user" value = {user.id} />
         </form>

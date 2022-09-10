@@ -7,6 +7,13 @@ type Todo = {
     uid: string;
 }
 
+type Diaries = {
+    id: string;
+    content: string;
+    date: Date;
+    uid: string;
+} 
+
 interface ImportMetaEnv {
     VITE_DISCORD_URL: string;
 }

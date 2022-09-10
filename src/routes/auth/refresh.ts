@@ -1,8 +1,10 @@
 const DISCORD_CLIENT_ID = import.meta.env.VITE_DISCORD_CLIENT_ID;
 const DISCORD_SECRET = import.meta.env.VITE_DISCORD_CLIENT_SECRET;
 const DISCORD_REDIRECT_URI = import.meta.env.VITE_DISCORD_REDIRECT_URI;
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get({query}) {
+
+export const get: RequestHandler = async ({query}) => {
     const disco_refresh_token = query.get('code');
     if (!disco_refresh_token) {
         return {
