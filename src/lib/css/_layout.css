@@ -98,7 +98,41 @@ h1 {
 
 /* CSS utils for animations */
 
-/* CSS styling for spotify music player */
+/* CSS styling for music container */
+.musicPlayer__container {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+}
+
+.musicPlayer__div {
+    border-radius: 12px 12px 0 0;
+    padding-top: 0.5rem;
+    background-color: var(--body-color);
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
+}
+
+.musicPlayer__list {
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    text-decoration: none;
+}
+
+.musicPlayer__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    cursor:pointer;
+}
+
+.musicPlayer__item:hover {
+    color: var(--first-color)
+}
 
 .spotify__toggle {
     position: absolute !important;
@@ -114,81 +148,16 @@ h1 {
     padding-top: 0.7rem;
 }
 
-.spotify__player {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-}
-
-.spotify__player__menu {
-    border-radius: 12px 12px 0 0;
-    padding-top: 0.5rem;
-    background-color: var(--body-color);
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
-}
-
 .spotify__music__player {
     border-radius: 12px 12px 0 0;
     box-shadow: 4px 4px -1px -1px rgba(0, 0, 0, 1);
 }
 
-.spotify__list {
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    text-decoration: none;
-}
 
-.spotify__button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1rem;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    cursor:pointer;
-}
-
-.spotify__button:hover {
-    color: var(--first-color)
-}
-
-/* CSS styling for spotify music player */
+/* CSS styling for music container */
 
 /* CSS styling for music player */
 
-.music__player__menu {
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
-    border-radius: 12px 12px 0 0;
-    width: 100%;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    z-index: var(--z-fixed);
-    padding-top: 0.5rem;
-    background-color: var(--body-color);
-}
-
-.music__list{
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    text-decoration: none;
-}
-
-.music__item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1rem;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    cursor: pointer;
-}
-
-.music__item:hover {
-    color: var(--first-color);
-}
 
 .music__player {
     height: 380px;
@@ -264,7 +233,7 @@ h1 {
 }
 
 .music__toggle {
-    position: fixed;
+    position: absolute !important;
     width: 3rem;
     height: 3rem;
     color: var(--title-color);
@@ -323,7 +292,7 @@ h1 {
         transition: 0.3s;
     }
 
-    .spotify__player__menu {
+    .musicPlayer__div {
         position: fixed;
         bottom:-100%;
         left: 0;
@@ -334,13 +303,6 @@ h1 {
     .spotify__toggle {
         bottom: 1rem !important;
         left: -0.5rem !important;
-    }
-
-    .music__player__menu {
-        position: fixed;
-        left: 0;
-        width: 100%;
-        transition: 0.3s;
     }
 
     .music__toggle {
@@ -388,7 +350,7 @@ h1 {
         font-size: 1rem;
     }
 
-    .spotify__player__menu {
+    .musicPlayer__div {
         position: fixed; 
         bottom:-100%; 
         left: 0; 
@@ -399,14 +361,6 @@ h1 {
     .spotify__toggle {
         bottom: 1rem !important;
         left: 1rem !important;
-    }
-
-    .music__player__menu {
-        position: fixed;
-        width: 100%;
-        left:0;
-        transition: 0.3s;
-        width: 20rem;
     }
 
     .music__toggle {

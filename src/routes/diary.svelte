@@ -30,18 +30,24 @@
     import "../app.css"
     import "$lib/css/diary.css"
     export let user:any;
-    export let diaries;
+    export let diaries: Diaries[];
     import DatePicker from "$lib/DatePicker.svelte";
 
     let currentDate = new Date();
     let currentDiary;
 
-    $:{currentDiary = diaries.filter(diaryDate => new Date(diaryDate.date).toLocaleDateString() == currentDate.toLocaleDateString()) }
+    currentDiary = diaries.filter(diary => {
+        console.log(new Date(diary.date).getTime())
+        console.log(currentDate.getTime())
+        return(diary.date == currentDate)
+    }) 
     
+    console.log(currentDiary)
+
     const onDateChange = d => {
         currentDate = d.detail;
-        console.log
     };
+    
 </script>
 
 {#if user}
@@ -49,7 +55,6 @@
         <DatePicker 
             on:datechange={onDateChange}
             selected={currentDate}
-            
         />
         <form action="/api/diary.json" method = "post">
             <textarea class="diary__textarea" name="diary" placeholder="What did you do today?">{currentDiary[0]?currentDiary[0].content:""}</textarea>

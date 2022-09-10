@@ -22,15 +22,6 @@
                     error: new Error(message)
                 }
             }
-
-        else {
-            return {
-                status:303,
-                headers: {
-                    location: "/login"
-                }
-            }
-        }
     };
 
 </script>
@@ -38,7 +29,7 @@
 
 
 <script lang="ts">
-    import TodoItem from "$lib/todo-item.svelte";
+    import TodoItem from "$lib/components/todo-item.svelte";
     export let user:any;
     export let todos:Todo[];
     import { setContext } from 'svelte';
@@ -57,6 +48,8 @@
             if (t.id === updatedTodo.id) return updatedTodo; return t;
         })
     }
+
+   
 
 </script>
 
